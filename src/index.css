@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: #0b1015;
+  font-family:
+    "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* 터널 지나가는 느낌의 스크롤 */
+@keyframes tunnelScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(44px);
+  }
+}
+.tunnel-scroll {
+  animation: tunnelScroll 0.42s linear infinite;
+}
+
+/* 손잡이 흔들림 */
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-3.5deg);
+  }
+  50% {
+    transform: rotate(3.5deg);
+  }
+}
+.sway {
+  animation: sway 2.6s ease-in-out infinite;
+}
+
+/* 단서 링 회전 */
+@keyframes dashSpin {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+.dash-spin {
+  animation: dashSpin 1.4s linear infinite;
+}
+
+/* 위험 경고 점멸 */
+@keyframes pulseWarn {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+.pulse-warn {
+  animation: pulseWarn 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tunnel-scroll,
+  .sway,
+  .dash-spin,
+  .pulse-warn {
+    animation: none !important;
+  }
+}
